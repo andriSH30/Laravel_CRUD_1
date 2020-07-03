@@ -18,8 +18,11 @@ Route::get('/',function(){
 });
 
 Route::get('/pertanyaan','PertanyaanController@index');
+Route::get('/pertanyaan/{id}','PertanyaanController@edit');
+Route::post('/pertanyaan/{id}/proses-edit','PertanyaanController@update');
 Route::post('/pertanyaan','PertanyaanController@store');
 Route::get('/pertanyaan/create','PertanyaanController@create');
+Route::get('/pertanyaan/{id}/hapus','PertanyaanController@destroy');
 
 Route::get('/lihat-jawaban/{id}','JawabanController@index');
 Route::get('/jawaban/{id}','JawabanController@create');

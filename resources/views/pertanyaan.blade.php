@@ -23,6 +23,14 @@
             <div class="alert alert-info" style="text-align: center;" role="alert">
                 {{ session('jawab') }}
             </div>
+        @elseif(session('pesanUpdate'))
+            <div class="alert alert-warning" style="text-align: center;" role="alert">
+                {{ session('pesanUpdate') }}
+            </div>
+        @elseif(session('pesanHapus'))
+            <div class="alert alert-dark" style="text-align: center;" role="alert">
+                {{ session('pesanHapus') }}
+            </div>
         @endif
 
         <table class="table">
@@ -41,8 +49,8 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $p->judul }}</td>
                     <td>{{ $p->isi }}</td>
-                    <td><a href="/lihat-jawaban/{{ $p->id }}" class="btn btn-outline-info">Lihat Jawaban</a></td>
-                    <td><a href="/jawaban/{{ $p->id }}" class="btn btn-outline-warning">Jawab</a></td>
+                    <td><a href="/lihat-jawaban/{{ $p->id }}" class="btn btn-info">Lihat Pertanyaan</a></td>
+                    <td><a href="/jawaban/{{ $p->id }}" class="btn btn-outline-warning">Jawab</a> <a href="/pertanyaan/{{ $p->id }}" class="btn btn-outline-dark">Edit</a> <a href="/pertanyaan/{{ $p->id }}/hapus" class="btn btn-outline-danger">Hapus</a></td>
                 </tr>
                 @endforeach
             </tbody>

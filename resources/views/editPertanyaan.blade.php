@@ -8,21 +8,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Buat Pertanyaan</title>
+    <title>Edit Pertanyaan</title>
   </head>
   <body style="background-color:whitesmoke;">
 
     <div class="container mt-3">
-    <span style="float: right; position: relative; margin-top: 10px;" class="badge badge-dark">created at : {{ $pertanyaan->created_at }}</span><span style="float: right; position: relative; margin-top: 10px; margin-right: 5px;" class="badge badge-dark">Last Updated at : {{ $pertanyaan->updated_at }}</span>
-        <a href="/pertanyaan" class="btn btn-danger mb-3">Kembali</a> <h2 style="text-align: center;">{{ $pertanyaan->judul }}</h2>
+        <a href="/pertanyaan" class="btn btn-danger mb-3">Kembali</a> <h2 style="text-align: center;">Edit Pertanyaan</h2>
         <hr>
-        <h4 style="text-align: center;">{{ $pertanyaan->isi }}</h4>
-        <br><br>
-        <ul>
-        @foreach($jawaban as $j)
-            <li>{{$j->isi}}</li>
-        @endforeach
-        </ul>
+        <form method="post" action="/pertanyaan/{{ $pertanyaan->id }}/proses-edit">
+        @csrf
+            <div class="form-group">
+                <label for="exampleInputEmail1">Judul</label>
+                <input name="judul" value="{{$pertanyaan->judul}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">isi</label>
+                <textarea name="isi" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$pertanyaan->isi}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Simpan</button>
+        </form>
     </div>
 
     <!-- Optional JavaScript -->
